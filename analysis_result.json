@@ -1,0 +1,74 @@
+{
+  "basic_info": {
+    "width": 800,
+    "height": 600,
+    "aspect_ratio": 1.33,
+    "total_pixels": 480000,
+    "channels": 3
+  },
+  "exposure": {
+    "mean_brightness": 39.2,
+    "std_brightness": 79.6,
+    "contrast": 79.6,
+    "dynamic_range": 255.0,
+    "shadows_percentage": 80.69999694824219,
+    "midtones_percentage": 10.5,
+    "highlights_percentage": 8.800000190734863,
+    "peak_brightness": 0,
+    "is_underexposed": true,
+    "is_overexposed": false,
+    "min_value": 0,
+    "max_value": 255
+  },
+  "quality": {
+    "edge_density": 0.0101,
+    "blur_score": 542.5,
+    "noise_level": 7.2,
+    "sharpness_score": 1.01,
+    "sharpness_level": "清晰"
+  },
+  "colors": {
+    "red_channel_mean": 33.5,
+    "green_channel_mean": 44.2,
+    "blue_channel_mean": 28.2,
+    "dominant_color_rgb": [
+      33,
+      44,
+      28
+    ]
+  },
+  "lighting": {
+    "light_direction": "左侧光",
+    "color_temperature": "中性色调",
+    "shadow_percentage": 80.7,
+    "shadow_regions": 2,
+    "has_strong_shadows": true,
+    "highlight_percentage": 8.4,
+    "overexposed_percentage": 8.4,
+    "has_highlight_clipping": true
+  },
+  "composition": {
+    "visual_center": [
+      357,
+      283
+    ],
+    "image_center": [
+      400,
+      300
+    ],
+    "center_offset": [
+      -43,
+      -17
+    ],
+    "main_subject_area": "middle_center",
+    "most_active_region": "middle_center",
+    "most_active_density": 0.0157,
+    "horizontal_lines": 20,
+    "vertical_lines": 3,
+    "has_horizon": true,
+    "vertical_symmetry": 0.03,
+    "horizontal_symmetry": 0.33,
+    "is_symmetric": false
+  },
+  "timestamp": "2025-07-24T04:57:08.610160"
+}

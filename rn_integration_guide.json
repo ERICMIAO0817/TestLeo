@@ -1,0 +1,64 @@
+{
+  "title": "拍照引导Agent - React Native集成指南",
+  "description": "如何在React Native应用中集成拍照引导功能",
+  "installation": {
+    "dependencies": [
+      "react-native-fs (文件系统访问)",
+      "react-native-camera (相机功能)",
+      "react-native-image-picker (图片选择)",
+      "@react-native-async-storage/async-storage (本地存储)"
+    ],
+    "python_backend": [
+      "opencv-python>=4.8.0",
+      "numpy>=1.24.0",
+      "openai>=1.0.0",
+      "pillow>=10.0.0",
+      "python-dotenv>=1.0.0"
+    ]
+  },
+  "api_endpoints": {
+    "analyze_frame": {
+      "method": "POST",
+      "url": "/api/analyze-frame",
+      "payload": {
+        "image": "base64编码的图片数据",
+        "scene_type": "场景类型(人像/风景/美食/建筑等)"
+      },
+      "response": {
+        "success": true,
+        "technical_analysis": "技术参数分析",
+        "suggestions": [
+          {
+            "type": "建议类型",
+            "text": "具体建议内容",
+            "priority": "优先级(high/medium/low)"
+          }
+        ],
+        "scene_type": "场景类型",
+        "timestamp": "时间戳"
+      }
+    },
+    "get_scene_tips": {
+      "method": "GET",
+      "url": "/api/scene-tips/{scene_type}",
+      "response": {
+        "scene_type": "场景类型",
+        "tips": [
+          "技巧列表"
+        ],
+        "timestamp": "时间戳"
+      }
+    }
+  },
+  "usage_example": {
+    "javascript": "\n// React Native 使用示例\nimport { captureImage, analyzeFrame } from './photoGuideService';\n\nconst PhotoGuideScreen = () => {\n  const [suggestions, setSuggestions] = useState([]);\n  const [isAnalyzing, setIsAnalyzing] = useState(false);\n\n  const handleCaptureAndAnalyze = async () => {\n    try {\n      setIsAnalyzing(true);\n      \n      // 捕获相机画面\n      const base64Image = await captureImage();\n      \n      // 发送到后端分析\n      const result = await analyzeFrame(base64Image, 'portrait');\n      \n      if (result.success) {\n        setSuggestions(result.suggestions);\n      }\n    } catch (error) {\n      console.error('分析失败:', error);\n    } finally {\n      setIsAnalyzing(false);\n    }\n  };\n\n  return (\n    <View>\n      <Camera onCapture={handleCaptureAndAnalyze} />\n      \n      {suggestions.map((suggestion, index) => (\n        <SuggestionCard \n          key={index}\n          type={suggestion.type}\n          text={suggestion.text}\n          priority={suggestion.priority}\n        />\n      ))}\n    </View>\n  );\n};\n            "
+  },
+  "best_practices": [
+    "实时分析时控制调用频率，避免过度消耗API",
+    "优先显示高优先级建议",
+    "缓存场景特定技巧，减少网络请求",
+    "提供离线基础建议功能",
+    "优化图片压缩以减少传输时间",
+    "添加用户反馈机制以改进建议质量"
+  ]
+}
